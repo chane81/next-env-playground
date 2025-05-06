@@ -1,5 +1,6 @@
 import getEnv from '@/utils/env';
 import { GetStaticProps } from 'next';
+import { env } from 'next-runtime-env';
 
 interface SSGPageProps {
   data: string;
@@ -7,7 +8,8 @@ interface SSGPageProps {
 
 function SSGPage({ data }: SSGPageProps) {
   // const pulbicEnv = process.env.NEXT_PUBLIC_ENV ?? '';
-  const publicEnv = getEnv('NEXT_PUBLIC_ENV');
+  // const publicEnv = getEnv('NEXT_PUBLIC_ENV');
+  const publicEnv = env('NEXT_PUBLIC_ENV');
 
   return (
     <div>
