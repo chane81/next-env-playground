@@ -3,17 +3,17 @@ import { PublicEnv, PrivateEnv } from '@/types/env';
 type Env = PublicEnv & PrivateEnv;
 
 const getEnv = (key: keyof Env) => {
-  let envValue = '';
-
-  if (key.includes('NEXT_PUBLIC_') && isClient()) {
-    envValue = window.environment[key] as string;
+  if (isClient() && key.includes('NEXT_PUBLIC_')) {
+    console.log('client getEnv', key);
+    return String(window.environment[key]);
   }
 
   if (!isClient()) {
-    envValue = process.env[key] as string;
+    console.log('server getEnv', key);
+    return String(process.env[key]);
   }
 
-  return envValue;
+  return '';
 };
 
 const isClient = () => typeof window !== 'undefined';
