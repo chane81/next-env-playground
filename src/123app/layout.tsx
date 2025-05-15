@@ -13,6 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <script src='/env.js' defer />
+      </head>
       <body className='mx-auto max-w-3xl p-10'>{children}</body>
     </html>
   );
